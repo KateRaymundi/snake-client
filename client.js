@@ -43,5 +43,20 @@ const connect = function() {
 
     return conn
 }
+    
+handleUserInput = (key) => {
+  if(key === ('\u0003')) {
+  
+  process.exit(console.log("bye"))
+}
+}
+const setupInput = function() {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding('utf8');
+  stdin.resume();
+  setupInput.on('data', handleUserInput )
+  return stdin; 
+}
 
 module.exports = {connect};
